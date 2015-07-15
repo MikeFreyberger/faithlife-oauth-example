@@ -24,7 +24,7 @@ var app = express()
 
 			temporaryTokenResponse.on('end', function() {
 				request.session.oauth_token_secret = querystring.parse(responseData).oauth_token_secret;
-				response.redirect('https://auth.logos.com/oauth/v1/authorize?' + responseData);
+				response.redirect('https://auth.logos.com/oauth/v1/authorize?oauth_token=' + querystring.parse(responseData).oauth_token);
 			})
 		}).end();
 	})
